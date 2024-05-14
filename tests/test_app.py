@@ -6,7 +6,7 @@ AUTH_CREDENTIALS = base64.b64encode(b"user1:password1").decode('utf-8')
 
 def upload_file(client):
     data = {
-        'file': (BytesIO(b'this is test file content'), 'temp.txt')
+        'file': (BytesIO(b'this is test file content'), "temp.txt")
     }
     response = client.post('/upload', data=data, headers={'Authorization': f'Basic {AUTH_CREDENTIALS}'})
     assert response.status_code == 200
@@ -35,4 +35,3 @@ def test_delete_file(client):
     # Verify file is deleted
     response = client.get(f'/download/{file_hash}')
     assert response.status_code == 404
-
