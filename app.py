@@ -34,7 +34,7 @@ def download_file(file_hash):
             io.BytesIO(file_data),
             mimetype='application/octet-stream',
             as_attachment=True,
-            attachment_filename=file_hash
+            download_name=file_hash
         )
     return jsonify({'error': 'File not found'}), 404
 
